@@ -235,7 +235,7 @@ const CreateReservation = () => {
               id="paymentAmount"
               name="paymentAmount"
               type="text"
-              placeholder="Payment Amount"
+              placeholder="Payment Amount (Rs.)"
               required
               maxLength={10}
             />

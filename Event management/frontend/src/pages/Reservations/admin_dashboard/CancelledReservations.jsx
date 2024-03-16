@@ -44,7 +44,7 @@ const CancelledReservations = () => {
     <div className="px-4 pb-4 my-4">
       <div className="flex justify-between p-4 mb-6 shadow-lg rounded-xl bg-sidebar-blue">
         <h2 className="text-3xl font-bold text-white ">
-          Manage Customers Reservations
+          Cancelled Reservations
         </h2>
         <div className="flex">
           <img
