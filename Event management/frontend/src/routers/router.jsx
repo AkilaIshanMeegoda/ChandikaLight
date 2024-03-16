@@ -16,6 +16,9 @@ import ClientCreateReservation from "../pages/Reservations/client_dashboard/Crea
 import ClientUpdateReservation from "../pages/Reservations/client_dashboard/UpdateReservation";
 import InitialPayment from "../pages/Reservations/client_dashboard/InitialPayment";
 import ApprovedPage from "../pages/Reservations/admin_dashboard/ApprovedPage";
+import ApprovedReservations from "../pages/Reservations/admin_dashboard/ApprovedReservations";
+import CancelledPage from "../pages/Reservations/admin_dashboard/CancelledPage";
+import CancelledReservations from "../pages/Reservations/admin_dashboard/CancelledReservations";
 
   const router = createBrowserRouter([
     {
@@ -46,6 +49,16 @@ import ApprovedPage from "../pages/Reservations/admin_dashboard/ApprovedPage";
           path:"/admin/dashboard/approve/:id",
           element:<ApprovedPage/>,
           loader:({params})=>fetch(`http://localhost:3000/reservation/reservation/${params.id}`)
+        },{
+          path:"/admin/dashboard/cancel/:id",
+          element:<CancelledPage/>,
+          loader:({params})=>fetch(`http://localhost:3000/reservation/reservation/${params.id}`)
+        },{
+          path:"/admin/dashboard/approve-reservations",
+          element:<ApprovedReservations/>
+        },{
+          path:"/admin/dashboard/cancel-reservations",
+          element:<CancelledReservations/>
         },
 
       ]

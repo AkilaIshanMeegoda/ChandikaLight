@@ -102,4 +102,52 @@ router.route("/reservation/:id").get(async (req, res) => {
   }
 });
 
+router.route("/pending-reservations").get(async (req, res) => {
+  try {
+
+    await Reservation.find({ reservationStatus: 'pending' })
+      .then((reservation) => {
+        return res.status(200).json(reservation);
+      })
+      .catch(() => {
+        return res.status(404).json({ message: "Client not found" });
+      });
+  } catch (err) {
+    console.timeLog(err.message);
+    res.status(500).send({ message: err.message });
+  }
+});
+
+router.route("/approved-reservations").get(async (req, res) => {
+  try {
+
+    await Reservation.find({ reservationStatus: 'approved' })
+      .then((reservation) => {
+        return res.status(200).json(reservation);
+      })
+      .catch(() => {
+        return res.status(404).json({ message: "Client not found" });
+      });
+  } catch (err) {
+    console.timeLog(err.message);
+    res.status(500).send({ message: err.message });
+  }
+});
+
+router.route("/cancelled-reservations").get(async (req, res) => {
+  try {
+
+    await Reservation.find({ reservationStatus: 'cancelled' })
+      .then((reservation) => {
+        return res.status(200).json(reservation);
+      })
+      .catch(() => {
+        return res.status(404).json({ message: "Client not found" });
+      });
+  } catch (err) {
+    console.timeLog(err.message);
+    res.status(500).send({ message: err.message });
+  }
+});
+
 module.exports = router;

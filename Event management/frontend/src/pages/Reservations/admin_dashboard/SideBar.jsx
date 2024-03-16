@@ -24,10 +24,10 @@ const SideBar = () => {
           <Sidebar.Item href="/admin/dashboard/manage" icon={CgFileDocument} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
             Clients Reservations
           </Sidebar.Item>
-          <Sidebar.Item href="/admin/dashboard/create" icon={GiConfirmed} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
+          <Sidebar.Item href="/admin/dashboard/approve-reservations" icon={GiConfirmed} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
             Approved Reservations
           </Sidebar.Item>
-          <Sidebar.Item href="/admin/dashboard/create" icon={GiCancel} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
+          <Sidebar.Item href="/admin/dashboard/cancel-reservations" icon={GiCancel} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
             Cancelled Reservations
           </Sidebar.Item>
           <Sidebar.Item href="/logout" icon={IoLogOut} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
