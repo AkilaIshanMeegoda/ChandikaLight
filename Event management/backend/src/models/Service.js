@@ -10,7 +10,6 @@ const ServiceSchema = new Schema({
 
     availability: {
         type: Number,
-        required: true
     },
 
     type: {

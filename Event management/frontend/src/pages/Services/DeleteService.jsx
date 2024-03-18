@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-
+import React from "react";
+import { Button } from "flowbite-react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { Link } from "react-router-dom";
 
 const DeleteService = () => {
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
   const { enqueueSnackbar } = useSnackbar();
@@ -14,14 +13,12 @@ const DeleteService = () => {
     axios
       .delete(`http://localhost:3000/service/delete/${id}`)
       .then(() => {
-        setLoading(false);
         enqueueSnackbar("Service deleted successfully!", {
           variant: "success",
         });
         navigate("/admin/service/dashboard/all");
       })
       .catch((error) => {
-        setLoading(false);
         enqueueSnackbar("Deletion unsuccessful!", { variant: "error" });
         alert("An error happened");
         console.log(error);
@@ -29,21 +26,19 @@ const DeleteService = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <div className="px-4 pb-4 my-4 h-screen">
       <div className="flex flex-col items-center col-span-2 mt-8">
-        <p className="mb-10 text-xl">Are you sure?</p>
-        <div className="flex gap-4">
+        <p className="mb-10 text-xl">
+          Are you sure you want to this Service/Package?
+        </p>
+        <div className="flex gap-14">
           <Link to="/admin/service/dashboard/all">
-            <button className="px-4 py-2 text-white bg-blue-500 rounded">
-              Cancel
-            </button>
+            <Button color="success">Cancel</Button>
           </Link>
-          <button
-            onClick={handleDeleteService}
-            className="px-4 py-2 text-white bg-red-600 rounded"
-          >
+
+          <Button color="warning" onClick={handleDeleteService}>
             Confirm
-          </button>
+          </Button>
         </div>
       </div>
     </div>
