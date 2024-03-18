@@ -49,7 +49,7 @@ const EditService = () => {
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Serviced edited successfully!', { variant: 'success'});
-        navigate('/');
+        navigate('/admin/service/dashboard/all');
       })
       .catch((error) => {
         setLoading(false);
@@ -60,25 +60,6 @@ const EditService = () => {
 
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <div className="flex items-center justify-center h-24 bg-blue-900">
-        <img
-          src="../pngs/logo.png"
-          alt="Logo"
-          className="w-16 h-16 mr-4"
-        />
-      </div>
-      <div className="flex items-center justify-center bg-gray-200">
-        <p className="text-2xl">Update a service</p>
-      </div>
-      <div className="flex items-center justify-center bg-blue-900">
-        <Link to="/">
-          <button
-            className="px-4 py-2 text-white bg-red-600 rounded-full"
-          >
-            Services
-          </button>
-        </Link>
-      </div>
       <div className="flex flex-col items-center col-span-2 mt-8">
         <div className="flex flex-col items-center p-8 text-white bg-red-600 rounded-lg h-96 w-80">
           <div className="w-full mb-4">

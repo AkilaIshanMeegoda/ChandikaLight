@@ -20,11 +20,11 @@ import ApprovedReservations from "../pages/Reservations/admin_dashboard/Approved
 import CancelledPage from "../pages/Reservations/admin_dashboard/CancelledPage";
 import CancelledReservations from "../pages/Reservations/admin_dashboard/CancelledReservations";
 import ServiceDashboardLayout from "../pages/Services/DashboardLayout";
-import ServiceDashboard from "../pages/Services/Dashboard";
 import AllServices from "../pages/Services/AllServices";
 import CreateService from "../pages/Services/CreateService";
 import DeleteService from "../pages/Services/DeleteService";
 import EditService from "../pages/Services/EditService";
+import ServiceHome from "../pages/Services/Dashboard";
 
   const router = createBrowserRouter([
     {
@@ -103,6 +103,10 @@ import EditService from "../pages/Services/EditService";
       path:"/admin/service/dashboard",
       element:<ServiceDashboardLayout/>,
       children:[
+        {
+          path:"/admin/service/dashboard",
+          element:<ServiceHome/>
+        },
         {
           path:"/admin/service/dashboard/all",
           element:<AllServices/>

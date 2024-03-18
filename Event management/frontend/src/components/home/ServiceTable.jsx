@@ -1,45 +1,49 @@
 import { Link } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
 import { MdOutlineDelete } from "react-icons/md";
+import { Table } from 'flowbite-react';
 
 const ServiceTable = ({ services }) => {
   return (
-    <table className="mx-auto text-white bg-blue-900 border-collapse w-80">
-      <thead className="bg-black">
-        <tr className="border-b-2 border-white">
-          <th className="p-2 text-left">No</th>
-          <th className="p-2 text-left">Service</th>
-          <th className="p-2 text-left">Availability</th>
-          <th className="p-2 text-left">Description</th>
-          <th className="p-2 text-left">Status</th>
-          <th className="p-2 text-left">Operations</th>
-        </tr>
-      </thead>
-      <tbody>
-        {services.map((service, index) => (
-          <tr
-            key={service._id}
-            className="items-center justify-center border-b border-white"
-          >
-            <td className="p-2">{index + 1}</td>
-            <td className="p-2">{service.sname}</td>
-            <td className="p-2">{service.availability}</td>
-            <td className="p-2">{service.description}</td>
-            <td className="p-2">{service.status}</td>
-            <td className="p-2">
+    <div className="overflow-x-auto">
+      <Table hoverable>
+        <Table.Head>
+          <Table.HeadCell>No</Table.HeadCell>
+          <Table.HeadCell>Service</Table.HeadCell>
+          <Table.HeadCell>Availability</Table.HeadCell>
+          <Table.HeadCell>Description</Table.HeadCell>
+          <Table.HeadCell>Status</Table.HeadCell>
+          <Table.HeadCell>
+            Operations
+          </Table.HeadCell>
+        </Table.Head>
+        <Table.Body className="divide-y">
+          {services.map((service, index) => (
+            <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+              key={service._id}
+              <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                {index + 1}
+              </Table.Cell>
+              <Table.Cell>{service.sname}</Table.Cell>
+              <Table.Cell>{service.availability}</Table.Cell>
+              <Table.Cell>{service.description}</Table.Cell>
+              <Table.Cell>{service.status}</Table.Cell>
+              <Table.Cell>
               <div className="flex gap-4">
                 <Link to={`/admin/service/dashboard/update/${service._id}`}>
-                  <AiOutlineEdit className="text-white" />
+                  <AiOutlineEdit className="text-black" />
                 </Link>
                 <Link to={`/admin/service/dashboard/delete/${service._id}`}>
                   <MdOutlineDelete className="text-red-500" />
                 </Link>
               </div>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+              </Table.Cell>
+            </Table.Row>
+          ))}
+          ;
+        </Table.Body>
+      </Table>
+    </div>
   );
 };
 

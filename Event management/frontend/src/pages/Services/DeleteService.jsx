@@ -18,7 +18,7 @@ const DeleteService = () => {
         enqueueSnackbar("Service deleted successfully!", {
           variant: "success",
         });
-        navigate("/");
+        navigate("/admin/service/dashboard/all");
       })
       .catch((error) => {
         setLoading(false);
@@ -30,32 +30,11 @@ const DeleteService = () => {
 
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <div className="flex items-center justify-center h-24 bg-blue-900">
-        <img
-          src="../pngs/logo.png"
-          alt="Logo"
-          className="w-16 h-16 mr-4"
-        />
-      </div>
-      <div className="flex items-center justify-center bg-gray-200">
-        <p className="text-2xl">Services management</p>
-      </div>
-      <div className="flex items-center justify-center bg-blue-900">
-        <Link to="/">
-          <button
-            className="px-4 py-2 text-white bg-red-600 rounded-full"
-          >
-            Services
-          </button>
-        </Link>
-      </div>
       <div className="flex flex-col items-center col-span-2 mt-8">
         <p className="mb-10 text-xl">Are you sure?</p>
         <div className="flex gap-4">
-          <Link to="/all">
-            <button
-              className="px-4 py-2 text-white bg-blue-500 rounded"
-            >
+          <Link to="/admin/service/dashboard/all">
+            <button className="px-4 py-2 text-white bg-blue-500 rounded">
               Cancel
             </button>
           </Link>
