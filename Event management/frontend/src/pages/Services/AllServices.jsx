@@ -18,7 +18,7 @@ const AllServices = () => {
   return (
     <div className="">
       <div className="flex items-center justify-center w-full h-16 mt-4 mb-4 text-white bg-blue-900">
-        Services
+        Services and Packages
       </div>
       <div className="col-span-3">
         <ServiceTable services={services} />
