@@ -16,6 +16,15 @@ import ClientCreateReservation from "../pages/Reservations/client_dashboard/Crea
 import ClientUpdateReservation from "../pages/Reservations/client_dashboard/UpdateReservation";
 import InitialPayment from "../pages/Reservations/client_dashboard/InitialPayment";
 import ApprovedPage from "../pages/Reservations/admin_dashboard/ApprovedPage";
+import ApprovedReservations from "../pages/Reservations/admin_dashboard/ApprovedReservations";
+import CancelledPage from "../pages/Reservations/admin_dashboard/CancelledPage";
+import CancelledReservations from "../pages/Reservations/admin_dashboard/CancelledReservations";
+import ServiceDashboardLayout from "../pages/Services/DashboardLayout";
+import ServiceDashboard from "../pages/Services/Dashboard";
+import AllServices from "../pages/Services/AllServices";
+import CreateService from "../pages/Services/CreateService";
+import DeleteService from "../pages/Services/DeleteService";
+import EditService from "../pages/Services/EditService";
 
   const router = createBrowserRouter([
     {
@@ -46,6 +55,16 @@ import ApprovedPage from "../pages/Reservations/admin_dashboard/ApprovedPage";
           path:"/admin/dashboard/approve/:id",
           element:<ApprovedPage/>,
           loader:({params})=>fetch(`http://localhost:3000/reservation/reservation/${params.id}`)
+        },{
+          path:"/admin/dashboard/cancel/:id",
+          element:<CancelledPage/>,
+          loader:({params})=>fetch(`http://localhost:3000/reservation/reservation/${params.id}`)
+        },{
+          path:"/admin/dashboard/approve-reservations",
+          element:<ApprovedReservations/>
+        },{
+          path:"/admin/dashboard/cancel-reservations",
+          element:<CancelledReservations/>
         },
 
       ]
@@ -75,6 +94,30 @@ import ApprovedPage from "../pages/Reservations/admin_dashboard/ApprovedPage";
         },{
           path:"/client/dashboard/initial-payment",
           element:<InitialPayment/>
+        }
+      ]
+    },
+
+    /*service routes*/
+    {
+      path:"/admin/service/dashboard",
+      element:<ServiceDashboardLayout/>,
+      children:[
+        {
+          path:"/admin/service/dashboard/all",
+          element:<AllServices/>
+        },
+        {
+          path:"/admin/service/dashboard/add",
+          element:<CreateService/>
+        },
+        {
+          path:"/admin/service/dashboard/delete/:id",
+          element:<DeleteService/>,
+        },
+        {
+          path:"/admin/service/dashboard/update/:id",
+          element:<EditService/>,
         }
       ]
     }

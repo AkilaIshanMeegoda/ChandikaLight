@@ -4,14 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import profile from "../../../images/profile.jpg";
 import Pagination from "./AdminPagination";
 
-const ManageReservations = () => {
+const CancelledReservations = () => {
   const [allReservations, setAllReservations] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(6);
 
   useEffect(() => {
-    fetch("http://localhost:3000/reservation/pending-reservations")
+    fetch("http://localhost:3000/reservation/cancelled-reservations")
       .then((res) => res.json())
       .then((data) => setAllReservations(data));
   }, []);
@@ -44,7 +44,7 @@ const ManageReservations = () => {
     <div className="px-4 pb-4 my-4">
       <div className="flex justify-between p-4 mb-6 shadow-lg rounded-xl bg-sidebar-blue">
         <h2 className="text-3xl font-bold text-white ">
-          Manage Customers Reservations
+          Cancelled Reservations
         </h2>
         <div className="flex">
           <img
@@ -145,21 +145,11 @@ const ManageReservations = () => {
                     View
                   </Link>
                 </button>
-                <button className="px-4 py-1 font-semibold text-white bg-red-600 rounded-sm hover:bg-red-800">
-                  <Link
-                    to={`/admin/dashboard/cancel/${reservation._id}`}
-                    className="font-medium hover:underline "
-                  >
-                    Cancel
-                  </Link>
-                </button>
-                <button className="px-4 py-1 ml-6 font-semibold text-white bg-green-600 rounded-sm hover:bg-green-800">
-                  <Link
-                    to={`/admin/dashboard/approve/${reservation._id}`}
-                    className="font-medium text-white w-mr-5 hover:underline"
-                  >
-                    Approve
-                  </Link>
+                <button
+                  onClick={() => handleDelete(reservation._id)}
+                  className="px-4 py-1 font-semibold text-white bg-red-600 rounded-sm hover:bg-red-800"
+                >
+                  Delete
                 </button>
               </Table.Cell>
             </Table.Row>
@@ -176,4 +166,4 @@ const ManageReservations = () => {
   );
 };
 
-export default ManageReservations;
+export default CancelledReservations;

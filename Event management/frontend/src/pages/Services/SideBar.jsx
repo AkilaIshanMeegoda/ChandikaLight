@@ -5,7 +5,7 @@ import { GiConfirmed } from "react-icons/gi";
 import { IoLogOut } from "react-icons/io5";
 import { GiCancel } from "react-icons/gi";
 import React from 'react'
-import logo from "../../../images/logo.png"
+import logo from "../../images/logo.png"
 
 const SideBar = () => {
   return (
@@ -21,17 +21,11 @@ const SideBar = () => {
           <Sidebar.Item href="/admin/dashboard" icon={HiChartPie} className="hover:bg-sidebar-orange " style={{ color: 'white' }}>
             Dashboard
           </Sidebar.Item>
-          <Sidebar.Item href="/admin/dashboard/manage" icon={CgFileDocument} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
-            Clients Reservations
+          <Sidebar.Item href="/admin/service/dashboard/all" icon={CgFileDocument} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
+            Services
           </Sidebar.Item>
-          <Sidebar.Item href="/admin/dashboard/approve-reservations" icon={GiConfirmed} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
-            Approved Reservations
-          </Sidebar.Item>
-          <Sidebar.Item href="/admin/dashboard/cancel-reservations" icon={GiCancel} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
-            Cancelled Reservations
-          </Sidebar.Item>
-          <Sidebar.Item href="/logout" icon={IoLogOut} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
-            Log Out
+          <Sidebar.Item href="/admin/service/dashboard/add" icon={CgFileDocument} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
+            Create service
           </Sidebar.Item>
         </Sidebar.ItemGroup>
       </Sidebar.Items>

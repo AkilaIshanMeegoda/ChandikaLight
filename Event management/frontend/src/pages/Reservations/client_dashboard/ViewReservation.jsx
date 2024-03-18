@@ -21,6 +21,7 @@ const ViewReservation = () => {
     venueLocation,
     receipt,
     paymentAmount,
+    reservationStatus
   } = useLoaderData();
 
   const reservationNavigate = () => {
@@ -109,8 +110,8 @@ const ViewReservation = () => {
               id="eventDescription"
               name="eventDescription"
               placeholder="Write your event description..."
-              readonly
-              rows={5}
+              readOnly
+              rows={3}
               value={eventDescription}
             />
           </div>
@@ -118,13 +119,13 @@ const ViewReservation = () => {
             <div className="block mb-2">
               <Label htmlFor="receipt" value="Receipt" />
             </div>
-            <img src={receipt} className="h-28" alt="receipt" />
+            <img src={receipt} className="h-20" alt="receipt" />
           </div>
         </div>
 
         {/*4th row*/}
         <div className="flex gap-8">
-          <div className="lg:w-1/3">
+          <div className="lg:w-1/2">
             <div className="block mb-2">
               <Label htmlFor="venueLocation" value="Venue Location" />
             </div>
@@ -137,7 +138,7 @@ const ViewReservation = () => {
             />
           </div>
 
-          <div className="lg:w-1/3">
+          <div className="lg:w-1/2">
             <div className="block mb-2">
               <Label htmlFor="contactNumber" value="Contact Number" />
             </div>
@@ -149,8 +150,11 @@ const ViewReservation = () => {
               readOnly
             />
           </div>
+        </div>
 
-          <div className="lg:w-1/3">
+        {/*last row*/}
+        <div className="flex gap-8">
+          <div className="lg:w-1/2">
             <div className="block mb-2">
               <Label htmlFor="paymentAmount" value="Payment Amount" />
             </div>
@@ -160,6 +164,28 @@ const ViewReservation = () => {
               type="text"
               readOnly
               value={paymentAmount}
+            />
+          </div>
+
+          <div className="lg:w-1/2">
+            <div className="block mb-2">
+              <Label htmlFor="reservationStatus" value="Reservation Status" />
+            </div>
+            <input
+              className={`text-white rounded-xl ${
+                reservationStatus === "approved"
+                  ? "bg-green-600"
+                  : reservationStatus === "cancelled"
+                  ? "bg-red-600"
+                  : reservationStatus === "pending"
+                  ? "bg-blue-600"
+                  : ""
+              }`}
+              id="reservationStatus"
+              name="reservationStatus"
+              type="text"
+              readOnly
+              value={reservationStatus}
             />
           </div>
         </div>

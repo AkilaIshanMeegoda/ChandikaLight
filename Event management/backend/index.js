@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 const app = express();
 require("dotenv").config();
 const reservationRouter = require("./src/routes/reservation");
+const serviceRouter = require("./src/routes/services");
 
 const PORT = process.env.PORT || 3000;
 
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(bodyParser.json({limit: '50mb', extended: true}));
 app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 app.use(bodyParser.text({ limit: '200mb' }));
+app.use('/icons', express.static('./Icon-svgs'));
 
 const URL = process.env.MONGODB_URL;
 
@@ -27,4 +29,5 @@ mongoose.connect(URL)
     });
 
 app.use("/reservation",reservationRouter);
+app.use("/service", serviceRouter);
 
