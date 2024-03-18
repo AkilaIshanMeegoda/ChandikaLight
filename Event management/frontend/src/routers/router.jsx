@@ -19,6 +19,12 @@ import ApprovedPage from "../pages/Reservations/admin_dashboard/ApprovedPage";
 import ApprovedReservations from "../pages/Reservations/admin_dashboard/ApprovedReservations";
 import CancelledPage from "../pages/Reservations/admin_dashboard/CancelledPage";
 import CancelledReservations from "../pages/Reservations/admin_dashboard/CancelledReservations";
+import ServiceDashboardLayout from "../pages/Services/DashboardLayout";
+import ServiceDashboard from "../pages/Services/Dashboard";
+import AllServices from "../pages/Services/AllServices";
+import CreateService from "../pages/Services/CreateService";
+import DeleteService from "../pages/Services/DeleteService";
+import EditService from "../pages/Services/EditService";
 
   const router = createBrowserRouter([
     {
@@ -88,6 +94,30 @@ import CancelledReservations from "../pages/Reservations/admin_dashboard/Cancell
         },{
           path:"/client/dashboard/initial-payment",
           element:<InitialPayment/>
+        }
+      ]
+    },
+
+    /*service routes*/
+    {
+      path:"/admin/service/dashboard",
+      element:<ServiceDashboardLayout/>,
+      children:[
+        {
+          path:"/admin/service/dashboard/all",
+          element:<AllServices/>
+        },
+        {
+          path:"/admin/service/dashboard/add",
+          element:<CreateService/>
+        },
+        {
+          path:"/admin/service/dashboard/delete/:id",
+          element:<DeleteService/>,
+        },
+        {
+          path:"/admin/service/dashboard/update/:id",
+          element:<EditService/>,
         }
       ]
     }
