@@ -102,7 +102,7 @@ const ClientLogin = () => {
             <p className="mt-8">
               Need an account?{" "}
               <a
-                href="#"
+                href="/client/dashboard/signup"
                 className="font-semibold text-blue-500 hover:text-blue-700"
               >
                 Create an account

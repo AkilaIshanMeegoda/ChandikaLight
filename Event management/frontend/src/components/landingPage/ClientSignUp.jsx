@@ -10,16 +10,15 @@ const ClientSignUp = () => {
           </h1>
 
           <p className="max-w-md mx-auto mt-4 text-center text-white">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati
-            sunt dolores deleniti inventore quaerat mollitia?
+          Welcome to our signup page! Just like how the perfect lighting can transform a space, your registration here marks the beginning of an illuminated journey with us. 
           </p>
 
           <form
             action="#"
             className="p-4 mt-6 mb-0 space-y-4 rounded-lg shadow-lg sm:p-6 lg:p-8"
           >
-            <p className="text-lg font-bold text-center">
-              Sign in to your account
+            <p className="text-2xl font-bold text-center">
+              Sign up
             </p>
 
             <div>
@@ -94,13 +93,13 @@ const ClientSignUp = () => {
               type="submit"
               className="block w-full px-5 py-3 text-sm font-medium text-white bg-indigo-600 rounded-lg"
             >
-              Sign in
+              Sign Up
             </button>
 
-            <p className="text-sm text-center text-black">
-              No account?
-              <a className="underline" href="#">
-                Sign up
+            <p className="font-bold text-center text-black text-md">
+            Already have an account? 
+              <a className="ml-2 underline" href="/client/dashboard/login">
+                 Sign in
               </a>
             </p>
           </form>
