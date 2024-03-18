@@ -20,13 +20,15 @@ import ApprovedReservations from "../pages/Reservations/admin_dashboard/Approved
 import CancelledPage from "../pages/Reservations/admin_dashboard/CancelledPage";
 import CancelledReservations from "../pages/Reservations/admin_dashboard/CancelledReservations";
 import ServiceDashboardLayout from "../pages/Services/DashboardLayout";
-import ServiceDashboard from "../pages/Services/Dashboard";
 import AllServices from "../pages/Services/AllServices";
 import CreateService from "../pages/Services/CreateService";
 import DeleteService from "../pages/Services/DeleteService";
 import EditService from "../pages/Services/EditService";
+import Login from "../components/landingPage/ClientLogin";
+import ClientSignUp from "../components/landingPage/ClientSignUp";
 
   const router = createBrowserRouter([
+    /*reservation routes*/
     {
       path: "/",
       element: <App/>,
@@ -76,6 +78,14 @@ import EditService from "../pages/Services/EditService";
         {
           path:"/client/dashboard",
           element:<ClientDashboard/>
+        },
+        {
+          path:"/client/dashboard/login",
+          element:<Login/>
+        },
+        {
+          path:"/client/dashboard/signup",
+          element:<ClientSignUp/>
         },
         {
           path:"/client/dashboard/create",
