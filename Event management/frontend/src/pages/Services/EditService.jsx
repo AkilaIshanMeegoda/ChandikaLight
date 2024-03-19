@@ -58,7 +58,7 @@ const EditService = () => {
   };
 
   function validateAvailability(x) {
-    if (x < 1 || x > 30) {
+    if (isNaN(x) || x < 1 || x > 30) {
       return false;
     } else {
       return true;
@@ -88,7 +88,7 @@ const EditService = () => {
             <Label htmlFor="base" value="Validity Period (Days)" />
           </div>
           <TextInput
-            id=""
+            id="availability"
             type="text"
             sizing="md"
             value={availability}

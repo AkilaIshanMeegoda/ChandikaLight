@@ -10,7 +10,7 @@ const ServiceTable = ({ services }) => {
         <Table.Head>
           <Table.HeadCell>No</Table.HeadCell>
           <Table.HeadCell>Service</Table.HeadCell>
-          <Table.HeadCell>Availability</Table.HeadCell>
+          <Table.HeadCell>Validity Period(Days)</Table.HeadCell>
           <Table.HeadCell>Type</Table.HeadCell>
           <Table.HeadCell>Description</Table.HeadCell>
           <Table.HeadCell>Status</Table.HeadCell>

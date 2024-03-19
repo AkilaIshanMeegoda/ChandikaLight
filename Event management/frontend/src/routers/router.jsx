@@ -26,6 +26,8 @@ import DeleteService from "../pages/Services/DeleteService";
 import EditService from "../pages/Services/EditService";
 import ServiceHome from "../pages/Services/Dashboard";
 
+
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -124,7 +126,9 @@ import ServiceHome from "../pages/Services/Dashboard";
           element:<EditService/>,
         }
       ]
-    }
+    },
+
+ 
   ]);
 
   export default router

@@ -41,7 +41,7 @@ const CreateService = () => {
   };
 
   function validateAvailability(x) {
-    if (x < 1 || x > 30) {
+    if (isNaN(x) || x < 1 || x > 30) {
       return false;
     } else {
       return true;
