@@ -137,7 +137,7 @@ const ManageReservations = () => {
               <Table.Cell>{reservation.venueLocation}</Table.Cell>
               <Table.Cell>{reservation.eventDate}</Table.Cell>
               <Table.Cell>
-                <button className="px-4 py-1 mr-6 font-semibold text-white bg-blue-600 rounded-sm hover:bg-blue-800">
+                <button className="px-4 py-1 mr-6 font-semibold text-white bg-blue-600 rounded-xl hover:bg-blue-800">
                   <Link
                     to={`/admin/dashboard/view-reservation/${reservation._id}`}
                     className="font-medium hover:underline "
@@ -145,7 +145,7 @@ const ManageReservations = () => {
                     View
                   </Link>
                 </button>
-                <button className="px-4 py-1 font-semibold text-white bg-red-600 rounded-sm hover:bg-red-800">
+                <button className="px-4 py-1 font-semibold text-white bg-red-600 rounded-xl hover:bg-red-800">
                   <Link
                     to={`/admin/dashboard/cancel/${reservation._id}`}
                     className="font-medium hover:underline "
@@ -153,7 +153,7 @@ const ManageReservations = () => {
                     Cancel
                   </Link>
                 </button>
-                <button className="px-4 py-1 ml-6 font-semibold text-white bg-green-600 rounded-sm hover:bg-green-800">
+                <button className="px-4 py-1 ml-6 font-semibold text-white bg-green-600 rounded-xl hover:bg-green-800">
                   <Link
                     to={`/admin/dashboard/approve/${reservation._id}`}
                     className="font-medium text-white w-mr-5 hover:underline"

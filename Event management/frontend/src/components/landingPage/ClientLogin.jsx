@@ -1,19 +1,23 @@
 import React from "react";
-import signupImg from "../../images/slidebar (4).jpg"
+import signupImg from "../../images/slidebar (4).jpg";
+import { Button } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 const ClientLogin = () => {
   return (
     <div>
       <section className="flex flex-col items-center h-screen md:flex-row">
         <div className="hidden w-full h-screen bg-indigo-600 lg:block md:w-1/2 xl:w-2/3">
-          <img
-            src={signupImg}
-            alt=""
-            className="object-cover w-full h-full"
-          />
+          <img src={signupImg} alt="" className="object-cover w-full h-full" />
         </div>
         <div className="flex items-center justify-center w-full h-screen px-6 bg-white md:max-w-md lg:max-w-fullmd:w-1/2 xl:w-1/3 lg:px-16 xl:px-12">
           <div className="w-full h-100">
+            <Link
+              to={`/`}
+              className="font-medium hover:underline "
+            >
+              <Button className="bg-client-brown">Home</Button>
+            </Link>
             <h1 className="mt-12 text-xl font-bold leading-tight md:text-2xl">
               Log in to your account
             </h1>
