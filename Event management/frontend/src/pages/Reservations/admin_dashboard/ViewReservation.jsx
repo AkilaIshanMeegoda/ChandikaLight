@@ -25,7 +25,7 @@ const ViewReservation = () => {
   } = useLoaderData();
 
   const reservationNavigate = () => {
-    navigate("/admin/dashboard/manage");
+    navigate("/admin/reservation/dashboard/manage");
   };
 
   return (

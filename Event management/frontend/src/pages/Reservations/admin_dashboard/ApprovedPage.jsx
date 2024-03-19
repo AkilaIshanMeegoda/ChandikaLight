@@ -43,7 +43,7 @@ const ApprovedPage = () => {
       .then((res) => res.json())
       .then((data) => {
         alert("Reservation approved successfully!!!");
-        navigate("/admin/dashboard/manage");
+        navigate("/admin/reservation/dashboard/manage");
       });
   }
 

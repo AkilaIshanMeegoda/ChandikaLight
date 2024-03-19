@@ -134,7 +134,7 @@ const ManageReservations = () => {
               <Table.Cell>{reservation.venueLocation}</Table.Cell>
               <Table.Cell>{reservation.eventDate}</Table.Cell>
               <Table.Cell>
-                <button className="px-4 py-1 mr-6 font-semibold text-white bg-green-600 rounded-sm hover:bg-green-800">
+                <button className="px-4 py-1 mr-6 font-semibold text-white bg-green-600 rounded-xl hover:bg-green-800">
                   <Link
                     to={`/client/dashboard/view-reservation/${reservation._id}`}
                     className="font-medium hover:underline "
@@ -144,7 +144,7 @@ const ManageReservations = () => {
                 </button>
                 <button
                   onClick={() => handleDelete(reservation._id)}
-                  className="px-4 py-1 font-semibold text-white bg-red-600 rounded-sm hover:bg-red-800"
+                  className="px-4 py-1 font-semibold text-white bg-red-600 rounded-xl hover:bg-red-800"
                 >
                   Delete
                 </button>
@@ -153,7 +153,7 @@ const ManageReservations = () => {
                   to={`/client/dashboard/update-reservation/${reservation._id}`}
                   className="mr-5 font-medium"
                 >
-                  <button className="px-4 py-1 ml-5 font-semibold text-white bg-blue-600 rounded-sm hover:bg-blue-800">
+                  <button className="px-4 py-1 ml-5 font-semibold text-white bg-blue-600 rounded-xl hover:bg-blue-800">
                     Edit
                   </button>
                 </Link>

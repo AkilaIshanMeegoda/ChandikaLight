@@ -13,7 +13,8 @@ export default {
         'header-orange':'#FC6736',
         'client-brown':'#714433',
         'client-yellow':'#f7c469',
-        'admin-gray':'#EFECEC'
+        'admin-gray':'#EFECEC',
+        'dark-brown':"#6E260E"
       },
     },
   },

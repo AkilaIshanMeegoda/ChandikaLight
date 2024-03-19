@@ -4,8 +4,8 @@ import {
   } from "react-router-dom";
 import App from "../App";
 import Home from "../components/landingPage/Home";
-import AdminDashboardLayout from "../pages/Reservations/admin_dashboard/DashboardLayout";
-import AdminDashboard from "../pages/Reservations/admin_dashboard/Dashboard";
+import AdminReservationDashboardLayout from "../pages/Reservations/admin_dashboard/DashboardLayout";
+import AdminReservationDashboard from "../pages/Reservations/admin_dashboard/Dashboard";
 import AdminManageReservations from "../pages/Reservations/admin_dashboard/ManageReservations";
 import AdminViewReservation from "../pages/Reservations/admin_dashboard/ViewReservation";
 import ClientDashboardLayout from "../pages/Reservations/client_dashboard/DashboardLayout";
@@ -20,13 +20,18 @@ import ApprovedReservations from "../pages/Reservations/admin_dashboard/Approved
 import CancelledPage from "../pages/Reservations/admin_dashboard/CancelledPage";
 import CancelledReservations from "../pages/Reservations/admin_dashboard/CancelledReservations";
 import ServiceDashboardLayout from "../pages/Services/DashboardLayout";
-import ServiceDashboard from "../pages/Services/Dashboard";
 import AllServices from "../pages/Services/AllServices";
 import CreateService from "../pages/Services/CreateService";
 import DeleteService from "../pages/Services/DeleteService";
 import EditService from "../pages/Services/EditService";
+import Login from "../components/landingPage/ClientLogin";
+import ClientSignUp from "../components/landingPage/ClientSignUp";
+import AboutUs from "../components/landingPage/AboutUs";
+import AdminDashboardLayout from "../pages/Admin/AdminDashboardLayout";
+import AdminDashboard from "../pages/Admin/AdminDashboard";
 
   const router = createBrowserRouter([
+    /*reservation routes*/
     {
       path: "/",
       element: <App/>,
@@ -38,32 +43,32 @@ import EditService from "../pages/Services/EditService";
       ]
     },
     {
-      path:"/admin/dashboard",
-      element:<AdminDashboardLayout/>,
+      path:"/admin/reservation/dashboard",
+      element:<AdminReservationDashboardLayout/>,
       children:[
         {
-          path:"/admin/dashboard",
-          element:<AdminDashboard/>
+          path:"/admin/reservation/dashboard",
+          element:<AdminReservationDashboard/>
         },{
-          path:"/admin/dashboard/manage",
+          path:"/admin/reservation/dashboard/manage",
           element:<AdminManageReservations/>
         },{
-          path:"/admin/dashboard/view-reservation/:id",
+          path:"/admin/reservation/dashboard/view-reservation/:id",
           element:<AdminViewReservation/>,
           loader:({params})=>fetch(`http://localhost:3000/reservation/reservation/${params.id}`)
         },{
-          path:"/admin/dashboard/approve/:id",
+          path:"/admin/reservation/dashboard/approve/:id",
           element:<ApprovedPage/>,
           loader:({params})=>fetch(`http://localhost:3000/reservation/reservation/${params.id}`)
         },{
-          path:"/admin/dashboard/cancel/:id",
+          path:"/admin/reservation/dashboard/cancel/:id",
           element:<CancelledPage/>,
           loader:({params})=>fetch(`http://localhost:3000/reservation/reservation/${params.id}`)
         },{
-          path:"/admin/dashboard/approve-reservations",
+          path:"/admin/reservation/dashboard/approve-reservations",
           element:<ApprovedReservations/>
         },{
-          path:"/admin/dashboard/cancel-reservations",
+          path:"/admin/reservation/dashboard/cancel-reservations",
           element:<CancelledReservations/>
         },
 
@@ -76,6 +81,18 @@ import EditService from "../pages/Services/EditService";
         {
           path:"/client/dashboard",
           element:<ClientDashboard/>
+        },
+        {
+          path:"/client/dashboard/login",
+          element:<Login/>
+        },
+        {
+          path:"/client/dashboard/aboutus",
+          element:<AboutUs/>
+        },
+        {
+          path:"/client/dashboard/signup",
+          element:<ClientSignUp/>
         },
         {
           path:"/client/dashboard/create",
@@ -119,6 +136,18 @@ import EditService from "../pages/Services/EditService";
           path:"/admin/service/dashboard/update/:id",
           element:<EditService/>,
         }
+      ]
+    },
+
+    /*admin route*/
+    {
+      path:"/admin/dashboard",
+      element:<AdminDashboardLayout/>,
+      children:[
+        {
+          path:"/admin/dashboard",
+          element:<AdminDashboard/>
+        },
       ]
     }
   ]);
