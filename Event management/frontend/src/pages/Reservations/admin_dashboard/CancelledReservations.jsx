@@ -139,7 +139,7 @@ const CancelledReservations = () => {
               <Table.Cell>
                 <button className="px-4 py-1 mr-6 font-semibold text-white bg-blue-600 rounded-xl hover:bg-blue-800">
                   <Link
-                    to={`/admin/dashboard/view-reservation/${reservation._id}`}
+                    to={`/admin/reservation/dashboard/view-reservation/${reservation._id}`}
                     className="font-medium hover:underline "
                   >
                     View

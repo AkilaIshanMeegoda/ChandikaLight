@@ -1,6 +1,5 @@
 import React from "react";
-import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
-import logo from "../../images/logo.png";
+import { Button } from "flowbite-react";
 import { Carousel } from "flowbite-react";
 import slidePic1 from "../../images/slidebar (1).jpg";
 import slidePic2 from "../../images/slidebar (2).jpg";
@@ -9,105 +8,16 @@ import slidePic4 from "../../images/slidebar (4).jpg";
 import slidePic5 from "../../images/slidebar (5).jpg";
 import createResImg from "../../images/createRes.jpg";
 import { Link } from "react-router-dom";
+import NavBar from "./NavBar";
+import Footer from "./FooterSection";
 
 const Home = () => {
   return (
     <div>
-      <Navbar fluid rounded className="bg-gradient-to-r from-client-yellow to-white">
-        <Navbar.Brand href="#">
-          <img
-            src={logo}
-            className="h-24 ml-5 rounded-lg"
-            alt="Flowbite React Logo"
-          />
-        </Navbar.Brand>
-        <div className="flex md:order-2">
-          <Dropdown
-            arrowIcon={false}
-            inline
-            label={
-              <Avatar
-                alt="User settings"
-                img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                rounded
-              />
-            }
-          >
-            <Dropdown.Header>
-              <span className="block text-sm">Bonnie Green</span>
-              <span className="block text-sm font-medium truncate">
-                name@flowbite.com
-              </span>
-            </Dropdown.Header>
-            <Dropdown.Item>Dashboard</Dropdown.Item>
-            <Dropdown.Item>Settings</Dropdown.Item>
-            <Dropdown.Item>Earnings</Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item href="/client/dashboard/login">Sign out</Dropdown.Item>
-          </Dropdown>
-          <Navbar.Toggle />
-        </div>
-        <Navbar.Collapse className="mr-12 text-xl">
-          <style>
-            {`
-              .nav-link {
-                text-decoration: none;
-                position: relative;
-                transition: color 0.3s;
-              }
-              .nav-link::after {
-                content: '';
-                position: absolute;
-                width: 100%;
-                height: 2px;
-                bottom: 0;
-                left: 0;
-                background-color: red;
-                visibility: hidden;
-                transform: scaleX(0);
-                transition: all 0.3s ease-in-out;
-              }
-              .nav-link:hover::after {
-                visibility: visible;
-                transform: scaleX(1);
-              }
-              .nav-link:hover {
-                color: black;
-              }
-           `}
-          </style>
-          <Navbar.Link
-            href="#"
-            className="text-lg font-bold text-client-brown nav-link"
-          >
-            Home
-          </Navbar.Link>
-          <Navbar.Link
-            href="/client/dashboard/manage"
-            className="text-lg font-bold text-client-brown nav-link"
-          >
-            Reservation
-          </Navbar.Link>
-          <Navbar.Link
-            href="/admin/service/dashboard"
-            className="text-lg font-bold text-client-brown nav-link"
-          >
-            Services
-          </Navbar.Link>
-          <Navbar.Link href="#" className="text-lg font-bold text-client-brown nav-link">
-            Inventory
-          </Navbar.Link>
-          <Navbar.Link href="#" className="text-lg font-bold text-client-brown nav-link">
-            Help and Feedback
-          </Navbar.Link>
-          <Navbar.Link href="#" className="text-lg font-bold text-client-brown nav-link">
-            About Us
-          </Navbar.Link>
-        </Navbar.Collapse>
-      </Navbar>
+      <NavBar />
 
       <div>
-        <div className="h-[80vh]">
+        <div className="h-[80vh]" >
           <Carousel>
             <img src={slidePic3} alt="..." />
             <img src={slidePic2} alt="..." />
@@ -160,7 +70,16 @@ const Home = () => {
           Our Services
         </p>
         <p className="mt-8 text-lg font-semibold text-justify mx-60">
-        Lighting, sound, and stage services encompass the design, installation, operation, and maintenance of essential elements for events and performances. Lighting professionals create ambiance and highlight focal points using fixtures and effects, while sound experts ensure clear audio delivery through system design and live mixing. Stage services cover the construction, decoration, and management of performance platforms, ensuring safety and functionality while enhancing visual appeal. Together, these services provide a seamless and immersive experience for audiences across various events and venues.
+          Lighting, sound, and stage services encompass the design,
+          installation, operation, and maintenance of essential elements for
+          events and performances. Lighting professionals create ambiance and
+          highlight focal points using fixtures and effects, while sound experts
+          ensure clear audio delivery through system design and live mixing.
+          Stage services cover the construction, decoration, and management of
+          performance platforms, ensuring safety and functionality while
+          enhancing visual appeal. Together, these services provide a seamless
+          and immersive experience for audiences across various events and
+          venues.
         </p>
         <div className="flex flex-wrap items-center justify-center p-12">
           <div className="relative flex-shrink-0 max-w-xs m-6 overflow-hidden bg-orange-500 rounded-lg shadow-lg">
@@ -321,6 +240,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

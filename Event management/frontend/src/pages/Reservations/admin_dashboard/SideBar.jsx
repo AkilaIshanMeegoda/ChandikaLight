@@ -18,16 +18,16 @@ const SideBar = () => {
             <img src={logo} imgalt="chandika light logo " style={{width: '100px', height: '100px', borderRadius:'20px'}} />
             </div>
 
-          <Sidebar.Item href="/admin/dashboard" icon={HiChartPie} className="hover:bg-sidebar-orange " style={{ color: 'white' }}>
+          <Sidebar.Item href="/admin/reservation/dashboard" icon={HiChartPie} className="hover:bg-sidebar-orange " style={{ color: 'white' }}>
             Dashboard
           </Sidebar.Item>
-          <Sidebar.Item href="/admin/dashboard/manage" icon={CgFileDocument} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
+          <Sidebar.Item href="/admin/reservation/dashboard/manage" icon={CgFileDocument} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
             Clients Reservations
           </Sidebar.Item>
-          <Sidebar.Item href="/admin/dashboard/approve-reservations" icon={GiConfirmed} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
+          <Sidebar.Item href="/admin/reservation/dashboard/approve-reservations" icon={GiConfirmed} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
             Approved Reservations
           </Sidebar.Item>
-          <Sidebar.Item href="/admin/dashboard/cancel-reservations" icon={GiCancel} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
+          <Sidebar.Item href="/admin/reservation/dashboard/cancel-reservations" icon={GiCancel} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
             Cancelled Reservations
           </Sidebar.Item>
           <Sidebar.Item href="/logout" icon={IoLogOut} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>

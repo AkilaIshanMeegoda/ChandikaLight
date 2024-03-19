@@ -43,7 +43,7 @@ const CancelledPage = () => {
       .then((res) => res.json())
       .then((data) => {
         alert("Reservation cancelled successfully!!!");
-        navigate("/admin/dashboard/manage");
+        navigate("/admin/reservation/dashboard/manage");
       });
   }
 
