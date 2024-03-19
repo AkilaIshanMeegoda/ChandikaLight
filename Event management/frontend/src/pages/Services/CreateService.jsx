@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { Select } from "flowbite-react";
 import { Button } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 const CreateService = () => {
   const [sname, setService] = useState("");
@@ -39,10 +40,10 @@ const CreateService = () => {
       });
   };
 
-function validateAvailability(x){
-    if(x < 1 || x > 30){
+  function validateAvailability(x) {
+    if (x < 1 || x > 30) {
       return false;
-    }else{
+    } else {
       return true;
     }
   }
@@ -139,11 +140,11 @@ function validateAvailability(x){
           <Button
             color="dark"
             onClick={() => {
-              if(validateAvailability(availability)){
+              if (validateAvailability(availability)) {
                 handleSaveService();
               } else {
-                document.getElementById("p1").innerHTML = "Availability must be a number between 1 and 30!";
-               
+                document.getElementById("p1").innerHTML =
+                  "Validity period must be a number between 1 and 30!";
               }
             }}
             className="px-4 py-2 mt-4 text-white bg-gray-700 rounded-full 

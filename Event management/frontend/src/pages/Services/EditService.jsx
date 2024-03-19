@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { Button } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 const EditService = () => {
   const [sname, setService] = useState("");
@@ -56,6 +57,13 @@ const EditService = () => {
       });
   };
 
+  function validateAvailability(x) {
+    if (x < 1 || x > 30) {
+      return false;
+    } else {
+      return true;
+    }
+  }
   return (
     <div className="px-4 pb-4 my-4 h-screen ">
       <div className="p-4 mb-6 shadow-lg rounded-xl bg-sidebar-blue flex justify-center items-center">
@@ -86,6 +94,9 @@ const EditService = () => {
             value={availability}
             onChange={(e) => setAvailability(e.target.value)}
           />
+        </div>
+        <div>
+          <p id="p1" className="text-red-500 text-xs"></p>
         </div>
         <div>
           <div className="mb-2 ">
@@ -126,9 +137,14 @@ const EditService = () => {
         <div className="flex justify-center items-center">
           <Button
             color="dark"
-            onClick={handleEditService}
-            className="px-4 py-2 mt-4 text-white bg-gray-700 rounded-full 
-            justify-center items-center "
+            onClick={() => {
+              if (validateAvailability(availability)) {
+                handleEditService();
+              } else {
+                document.getElementById("p1").innerHTML =
+                  "Validity period must be a number between 1 and 30!";
+              }
+            }}
           >
             Save
           </Button>
