@@ -25,8 +25,8 @@ const FooterSection = () => {
               <div>
                 <Footer.Title title="about" className="text-client-brown" />
                 <Footer.LinkGroup col>
-                  <Footer.Link href="#" className="text-client-brown">Flowbite</Footer.Link>
-                  <Footer.Link href="#" className="text-client-brown">Tailwind CSS</Footer.Link>
+                  <Footer.Link href="#" className="text-client-brown">About Us</Footer.Link>
+                  <Footer.Link href="#" className="text-client-brown">Contact Us</Footer.Link>
                 </Footer.LinkGroup>
               </div>
               <div>
