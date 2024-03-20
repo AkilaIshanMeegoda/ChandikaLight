@@ -234,7 +234,7 @@ const CreateReservation = () => {
             <TextInput
               id="paymentAmount"
               name="paymentAmount"
-              type="text"
+              type="number"
               placeholder="Payment Amount (Rs.)"
               required
               maxLength={10}
