@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 
-import { Link } from "react-router-dom";
 import ServiceTable from "../../components/home/ServiceTable";
 
 const AllServices = () => {
   const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     fetch("http://localhost:3000/service/all")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
 
   return (
-    <div className="">
-      <div className="flex items-center justify-center w-full h-16 mt-4 mb-4 text-white bg-blue-900">
-        Services
+    <div className="px-4 pb-4 my-4 h-screen">
+      <div className="p-4 mb-6 shadow-lg rounded-xl bg-sidebar-blue flex justify-center items-center">
+        <h2 className="text-3xl font-bold text-white ">
+          Services and Packages
+        </h2>
       </div>
       <div className="col-span-3">
         <ServiceTable services={services} />

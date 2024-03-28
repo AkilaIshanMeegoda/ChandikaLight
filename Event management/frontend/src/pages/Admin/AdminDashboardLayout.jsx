@@ -179,7 +179,7 @@ const AdminDashboardLayout = () => {
         </div>
 
         {/*3rd row*/}
-        <div className="flex m-8">
+        <div className="flex  justify-between m-8">
           <Card className="max-w-sm ">
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Rental Management
@@ -215,7 +215,7 @@ const AdminDashboardLayout = () => {
               Coordinate the delivery, setup, and teardown of equipment and
               technical support during events.
             </p>
-            <Link to={`#`}>
+            <Link to={`/admin/service/dashboard`}>
               <Button>
                 Read more
                 <svg

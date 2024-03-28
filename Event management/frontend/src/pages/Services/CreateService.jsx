@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-
+import { Label, TextInput } from "flowbite-react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { Select } from "flowbite-react";
+import { Button } from "flowbite-react";
 import { Link } from "react-router-dom";
 
 const CreateService = () => {
@@ -12,7 +14,6 @@ const CreateService = () => {
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
   const [icon, setIcon] = useState("person.svg"); //default
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -26,85 +27,106 @@ const CreateService = () => {
       icon,
     };
 
-    setLoading(true);
     axios
       .post("http://localhost:3000/service/add", data)
       .then(() => {
-        setLoading(false);
         enqueueSnackbar("Service added successfully!", { variant: "success" });
-        navigate("/");
+        navigate("/admin/service/dashboard");
       })
       .catch((error) => {
-        setLoading(false);
         enqueueSnackbar("An error occurred!", { variant: "error" });
         alert("An error happened");
         console.log(error);
       });
   };
 
+  function validateAvailability(x) {
+    if (isNaN(x) || x < 1 || x > 30) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-      <div className="flex items-center justify-center h-24 bg-blue-900">
-        <img
-          src="../pngs/logo.png"
-          alt="Logo"
-          className="w-16 h-16 mr-4"
-        />
+    <div className="px-4 pb-4 my-4 h-screen ">
+      <div className="p-4 mb-6 shadow-lg rounded-xl bg-sidebar-blue flex justify-center items-center">
+        <h2 className="text-3xl font-bold text-white ">Create a Service</h2>
       </div>
-      <div className="flex items-center justify-center bg-gray-200">
-        <h1 className="text-2xl">Add a service</h1>
-      </div>
-      <div className="flex items-center justify-center bg-blue-900">
-        <Link to="/">
-          <button
-            className="px-4 py-2 text-white bg-red-600 rounded-full"
-          >
-            Services
-          </button>
-        </Link>
-      </div>
-      <div className="flex items-center justify-center col-span-3">
-        <div className="flex flex-col items-center p-4 bg-red-600 rounded-lg">
-          <label className="mb-2">Service</label>
-          <input
+
+      <div className=" w-[400px]">
+        <div>
+          <div className="mb-2 ">
+            <Label htmlFor="small" value="Service" />
+          </div>
+          <TextInput
+            className="w-full"
+            id=""
             type="text"
             value={sname}
             onChange={(e) => setService(e.target.value)}
-            className="w-full px-2 py-1 mb-2 border border-gray-400 rounded"
           />
-          <label className="mb-2">Validity Period (Days)</label>
-          <input
-            type="number"
+        </div>
+        <div>
+          <div className="mb-2 ">
+            <Label htmlFor="base" value="Validity Period (Days)" />
+          </div>
+          <TextInput
+            id=""
+            type="text"
+            sizing="md"
             value={availability}
             onChange={(e) => setAvailability(e.target.value)}
-            className="w-full px-2 py-1 mb-2 border border-gray-400 rounded"
           />
-          <label className="mb-2">Type</label>
-          <input
+        </div>
+        <div>
+          <p id="p1" className="text-red-500 text-xs"></p>
+        </div>
+        <div>
+          <div className="mb-2 ">
+            <Label htmlFor="large" value="Type" />
+          </div>
+          <TextInput
+            id="large"
             type="text"
+            sizing="lg"
             value={type}
             onChange={(e) => setType(e.target.value)}
-            className="w-full px-2 py-1 mb-2 border border-gray-400 rounded"
           />
-          <label className="mb-2">Description</label>
-          <input
+        </div>
+        <div>
+          <div className="mb-2 ">
+            <Label htmlFor="large" value="Description" />
+          </div>
+          <TextInput
+            id="large"
             type="text"
+            sizing="lg"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="w-full px-2 py-1 mb-2 border border-gray-400 rounded"
           />
-          <label className="mb-2">Status</label>
-          <input
+        </div>
+        <div>
+          <div className="mb-2 ">
+            <Label htmlFor="large" value="Status" />
+          </div>
+          <TextInput
+            id="large"
             type="text"
+            sizing="lg"
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            className="w-full px-2 py-1 mb-2 border border-gray-400 rounded"
           />
-          <label className="mb-2">Icon</label>
-          <select
+        </div>
+        <div className="">
+          <div className="mb-2 ">
+            <Label htmlFor="countries" value="Select Icon" />
+          </div>
+          <Select
+            id="countries"
+            required
             value={icon}
             onChange={(e) => setIcon(e.target.value)}
-            className="w-full px-2 py-1 mb-2 border border-gray-400 rounded"
           >
             <option value="bulb.svg">Lighting</option>
             <option value="hut.svg">Hut Services</option>
@@ -112,13 +134,24 @@ const CreateService = () => {
             <option value="person.svg">Social</option>
             <option value="speaker.svg">Sound</option>
             <option value="vehicle.svg">Transport</option>
-          </select>
-          <button
-            onClick={handleSaveService}
-            className="px-4 py-2 mt-4 text-white bg-red-700 rounded-full"
+          </Select>
+        </div>
+        <div className="flex justify-center items-center">
+          <Button
+            color="dark"
+            onClick={() => {
+              if (validateAvailability(availability)) {
+                handleSaveService();
+              } else {
+                document.getElementById("p1").innerHTML =
+                  "Validity period must be a number between 1 and 30!";
+              }
+            }}
+            className="px-4 py-2 mt-4 text-white bg-gray-700 rounded-full 
+            justify-center items-center "
           >
             Create
-          </button>
+          </Button>
         </div>
       </div>
     </div>

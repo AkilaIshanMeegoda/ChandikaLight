@@ -1,36 +1,35 @@
-import React, { useState, useEffect } from 'react';
-
-import axios from 'axios'; 
-import { useNavigate, useParams } from 'react-router-dom';
-import { useSnackbar } from 'notistack';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Label, TextInput } from "flowbite-react";
+import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSnackbar } from "notistack";
+import { Button } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 const EditService = () => {
-  const [sname, setService] = useState('');
-  const [availability, setAvailability] = useState('');
-  const [type, setType] = useState('');
-  const [description, setDescription] = useState('');
-  const [status, setStatus] = useState('');
-  const [loading, setLoading] = useState(false); 
+  const [sname, setService] = useState("");
+  const [availability, setAvailability] = useState("");
+  const [type, setType] = useState("");
+  const [description, setDescription] = useState("");
+  const [status, setStatus] = useState("");
+
   const navigate = useNavigate();
   const { id } = useParams();
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
-    setLoading(true);
-    axios.get(`http://localhost:3000/service/get/${id}`)
+    axios
+      .get(`http://localhost:3000/service/get/${id}`)
       .then((response) => {
         setService(response.data.sname);
         setAvailability(response.data.availability);
         setType(response.data.type);
         setDescription(response.data.description);
         setStatus(response.data.status);
-        setLoading(false);
       })
       .catch((error) => {
-        setLoading(false);
-        enqueueSnackbar('Unsuccessful!', { variant: 'error'})
-        alert('An error happened');
+        enqueueSnackbar("Unsuccessful!", { variant: "error" });
+        alert("An error happened");
         console.log(error);
       });
   }, []);
@@ -41,102 +40,118 @@ const EditService = () => {
       availability,
       type,
       description,
-      status
+      status,
     };
-    setLoading(true);
+
     axios
       .put(`http://localhost:3000/service/update/${id}`, data)
       .then(() => {
-        setLoading(false);
-        enqueueSnackbar('Serviced edited successfully!', { variant: 'success'});
-        navigate('/');
+        enqueueSnackbar("Serviced edited successfully!", {
+          variant: "success",
+        });
+        navigate("/admin/service/dashboard/all");
       })
       .catch((error) => {
-        setLoading(false);
-        alert('An error happened');
+        alert("An error happened");
         console.log(error);
       });
   };
 
+  function validateAvailability(x) {
+    if (isNaN(x) || x < 1 || x > 30) {
+      return false;
+    } else {
+      return true;
+    }
+  }
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <div className="flex items-center justify-center h-24 bg-blue-900">
-        <img
-          src="../pngs/logo.png"
-          alt="Logo"
-          className="w-16 h-16 mr-4"
-        />
+    <div className="px-4 pb-4 my-4 h-screen ">
+      <div className="p-4 mb-6 shadow-lg rounded-xl bg-sidebar-blue flex justify-center items-center">
+        <h2 className="text-3xl font-bold text-white ">Update Service</h2>
       </div>
-      <div className="flex items-center justify-center bg-gray-200">
-        <p className="text-2xl">Update a service</p>
-      </div>
-      <div className="flex items-center justify-center bg-blue-900">
-        <Link to="/">
-          <button
-            className="px-4 py-2 text-white bg-red-600 rounded-full"
-          >
-            Services
-          </button>
-        </Link>
-      </div>
-      <div className="flex flex-col items-center col-span-2 mt-8">
-        <div className="flex flex-col items-center p-8 text-white bg-red-600 rounded-lg h-96 w-80">
-          <div className="w-full mb-4">
-            <label className="w-full">Service</label>
-            <input
-              type="text"
-              value={sname}
-              onChange={(e) => setService(e.target.value)}
-              className="w-full text-white bg-red-600"
-            />
+
+      <div className=" w-[400px]">
+        <div>
+          <div className="mb-2 ">
+            <Label htmlFor="small" value="Service" />
           </div>
-          <div className="w-full mb-4">
-            <label className="w-full">Validity Period(Days)</label>
-            <input
-              type="number"
-              value={availability}
-              onChange={(e) => setAvailability(e.target.value)}
-              className="w-full text-white bg-red-600"
-            />
+          <TextInput
+            className="w-full"
+            id=""
+            type="text"
+            value={sname}
+            onChange={(e) => setService(e.target.value)}
+          />
+        </div>
+        <div>
+          <div className="mb-2 ">
+            <Label htmlFor="base" value="Validity Period (Days)" />
           </div>
-          <div className="w-full mb-4">
-            <label className="w-full">Type</label>
-            <input
-              type="text"
-              value={type}
-              onChange={(e) => setType(e.target.value)}
-              className="w-full text-white bg-red-600"
-            />
+          <TextInput
+            id="availability"
+            type="text"
+            sizing="md"
+            value={availability}
+            onChange={(e) => setAvailability(e.target.value)}
+          />
+        </div>
+        <div>
+          <p id="p1" className="text-red-500 text-xs"></p>
+        </div>
+        <div>
+          <div className="mb-2 ">
+            <Label htmlFor="large" value="Type" />
           </div>
-          <div className="w-full mb-4">
-            <label className="w-full">Description</label>
-            <input
-              type="text"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="w-full text-white bg-red-600"
-            />
+          <TextInput
+            id="large"
+            type="text"
+            sizing="lg"
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+          />
+        </div>
+        <div>
+          <div className="mb-2 ">
+            <Label htmlFor="large" value="Description" />
           </div>
-          <div className="w-full mb-4">
-            <label className="w-full">Status</label>
-            <input
-              type="text"
-              value={status}
-              onChange={(e) => setStatus(e.target.value)}
-              className="w-full text-white bg-red-600"
-            />
+          <TextInput
+            id="large"
+            type="text"
+            sizing="lg"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+        <div>
+          <div className="mb-2 ">
+            <Label htmlFor="large" value="Status" />
           </div>
-          <button
-            className="px-4 py-2 text-white bg-gray-700 rounded cursor-pointer"
-            onClick={handleEditService}
+          <TextInput
+            id="large"
+            type="text"
+            sizing="lg"
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+          />
+        </div><br/>
+        <div className="flex justify-center items-center">
+          <Button
+            color="dark"
+            onClick={() => {
+              if (validateAvailability(availability)) {
+                handleEditService();
+              } else {
+                document.getElementById("p1").innerHTML =
+                  "Validity period must be a number between 1 and 30!";
+              }
+            }}
           >
             Save
-          </button>
+          </Button>
         </div>
-        
       </div>
     </div>
   );
-}
+};
 
 export default EditService;

@@ -18,7 +18,7 @@ const SideBar = () => {
             <img src={logo} imgalt="chandika light logo " style={{width: '100px', height: '100px', borderRadius:'20px'}} />
             </div>
 
-          <Sidebar.Item href="/admin/reservation/dashboard" icon={HiChartPie} className="hover:bg-sidebar-orange " style={{ color: 'white' }}>
+          <Sidebar.Item href="/admin/dashboard" icon={HiChartPie} className="hover:bg-sidebar-orange " style={{ color: 'white' }}>
             Dashboard
           </Sidebar.Item>
           <Sidebar.Item href="/admin/reservation/dashboard/manage" icon={CgFileDocument} className="hover:bg-sidebar-orange" style={{ color: 'white' }}>
